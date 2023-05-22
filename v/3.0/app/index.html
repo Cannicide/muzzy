@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="theme theme-dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Muzzy App</title>
+    <link rel="icon" href="../../../icon.png" />
+    <meta property="og:description" content="An advanced tool to detect issues in formal essays." />
+    <meta property="og:title" content="Muzzy by Cannicide v3.0" />
+    <meta property="og:url" content="https://muzzy.cannicide.net/v/3.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="../../../styles/quill.smoke.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
+    <script src="https://unpkg.com/xregexp/xregexp-all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-base64@2.5.2/base64.min.js"></script>
+    <script src="../../../scripts/write-good.js"></script>
+    <script src="../../../scripts/typo-dependencies.js"></script>
+    <script src="../../../scripts/typo.js"></script>
+    <script src="../../../scripts/tense.js"></script>
+</head>
+<body>
+    <div class="muzzy-ui editor-background"></div>
+    <div class="muzzy-ui toolbar-background"></div>
+
+    <div id="muzzy-error-popover">
+        <div class="muzzy-error-container">
+            <span class="muzzy-error-type tag has-text-light is-medium"></span>
+            <p class="muzzy-error-name title is-5"></p>
+            <p class="muzzy-error-desc subtitle is-6"></p>
+            <div class="muzzy-error-example-box notification is-danger">
+                <span class="muzzy-error-example-corner" title="Incorrect Example">
+                    <span class="example-label">ex</span>
+                    <span class="icon"><i class="iconify" data-icon="mdi-cancel"></i></span>
+                </span>
+                <div class="muzzy-error-example-wrong"></div>
+            </div>
+            <div class="muzzy-error-example-box notification is-success">
+                <span class="muzzy-error-example-corner" title="Correct Example">
+                    <span class="example-label">ex</span>
+                    <span class="icon"><i class="iconify" data-icon="mdi-check-circle-outline"></i></span>
+                </span>
+                <div class="muzzy-error-example-correct"></div>
+            </div>
+            <div class="muzzy-error-button-group">
+                <a class="muzzy-error-button muzzy-error-report button">View In Report</a>
+                <a class="muzzy-error-button muzzy-error-ignore button">Ignore</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="editor-container" class="editor-unloaded">
+        <div id="editor">
+            <!-- Editor contents dynamically loaded -->
+        </div>
+    </div>
+
+    <div class="margin-container margin-left">
+        <div class="margin-corner">
+            <span class="navbar-burger" data-target="sidebar">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+        <div id="sidebar" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item is-center is-flex" href="https://muzzy.cannicide.net/">
+                    Back to Home
+                </a>
+                <a class="navbar-item navbar-has-popover" data-popover="#navbar-popover-file">
+                    File
+                </a>
+                <div style="display: none;" id="navbar-popover-file">
+                    <a class="navbar-item" onclick="Muzzy.Nav.openAsMuzzy();">
+                        Open Muzzy File
+                    </a>
+                    <!-- <a class="navbar-item">
+                        Open File
+                    </a>
+                    <a class="navbar-item">
+                        Download (.docx)
+                    </a> -->
+                    <!-- TODO: Add ability to open .docx, .muzzy files in future update -->
+                    <!-- TODO: Add ability to download as .docx in future update -->
+                    <a class="navbar-item" onclick="Muzzy.Nav.downloadAsMuzzy();">
+                        Download (.muzzy)
+                    </a>
+                </div>
+                <a class="navbar-item navbar-has-popover" data-popover="#navbar-popover-view">
+                    View
+                </a>
+                <div style="display: none;" id="navbar-popover-view">
+                    <a class="navbar-item" data-open-modal="#muzzy-error-report">
+                        View Error Report
+                    </a>
+                    <a class="navbar-item" onclick="Muzzy.Nav.showThemes();">
+                        Set Theme
+                    </a>
+                    <a class="navbar-item prevent-sidebar-close" onclick="Muzzy.Nav.disableErrors(this);">
+                        Disable Error Checks
+                    </a>
+                    <a class="navbar-item prevent-sidebar-close" onclick="Muzzy.Nav.showIgnoredErrors(this);">
+                        Show Ignored Errors
+                    </a>
+                    <a class="navbar-item" data-open-modal="#muzzy-updatelog">
+                        Latest Updates
+                    </a>
+                </div>
+                <!-- <a class="navbar-item navbar-has-popover" data-popover="#navbar-popover-insert">
+                    Insert
+                </a>
+                <div style="display: none;" id="navbar-popover-insert">
+                    <a class="navbar-item">
+                        Insert References
+                    </a>
+                    <a class="navbar-item">
+                        Insert Templates
+                    </a>
+                </div>-->
+                <!-- TODO: add ability to add references and templates in future update -->
+            </div>
+        </div>
+    </div>
+    <div class="margin-container margin-right">
+        <div class="margin-corner" onclick="location.href='https://muzzy.cannicide.net/';">
+            <img src="../../../icon.png" class="logo" alt="Logo">
+        </div>
+        <div class="margin-scrollbar">
+            <div class="margin-scrollbar-inner"></div>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <div class="footer-left">
+        <p>
+            <span class="footer-words">&hellip;</span> Words
+        </p>
+        <p>
+            <span class="footer-chars">&hellip;</span> Characters
+        </p>
+        <p onclick="Muzzy.Errors.showReport();">
+            <span class="footer-errs">&hellip;</span> Errors
+        </p>
+        </div>
+        <div class="footer-right">
+        <p>
+            <a class="has-text-primary footer-muzzy muzzy-theme-id" data-tooltip="" onclick="Muzzy.Nav.showThemes();">Loading Theme&hellip;</a>
+        </p>
+        <p>
+            &copy; Cannicide
+        </p>
+        </div>
+    </div>
+
+    <div style="display: none;" id="tooltip-themes">
+        <!-- Themes are dynamically inserted here -->
+    </div>
+
+    <div class="modal" id="muzzy-error-report">
+        <!-- Error report dynamically inserted here -->
+    </div>
+
+    <div class="modal" id="muzzy-updatelog">
+        <p class="title is-3">Muzzy Updatelog</p>
+        <hr />
+        <p class="title is-4">v3.0</p>
+        <p class="content">
+            <ul>
+            <li>&dash; Fully rewrote Muzzy, from the ground up</li>
+            <li>&dash; Merged Muzzy v2.2's previously distinct concepts of Error Finder and Document Editor into a 
+                single application</li>
+            <li>&dash; Added all-new WYSIWYG text formatting capabilities</li>
+            <li>&dash; Created new sleek, minimalistic editor design</li>
+            <li>&dash; Created 9 new gradient themes and 2 flat themes</li>
+            <li>&dash; Error-checking now occurs as you type</li>
+            <li>&dash; Word, character, and error counting now occurs as you type</li>
+            <li>&dash; Added ability to properly ignore individual errors</li>
+            <li>&dash; Added error report to view all errors at once</li>
+            <li>&dash; Facilitated navigating to individual errors in and from the error report</li>
+            <li>&dash; Clicking on errors now displays a fancy popup with descriptions and examples</li>
+            <li>&dash; Added multiple color-coded categories of errors</li>
+            <li>&dash; Added 21 new, powerful error checks for hundreds of essay errors, including dozens of error 
+                checks not even attempted in Muzzy v2.2 (such as spelling and clich&eacute; checks)
+            </li>
+            <li>&dash; Facilitated adding new error checks in the future, unlike the grotesque system of Muzzy v2.2</li>
+            <li>&dash; Added ability to disable and re-enable error checks</li>
+            <li>&dash; Added ability to show and hide all ignored errors</li>
+            <li>&dash; Error system now never checks for errors within quotes</li>
+            <li>&dash; Theme selection now persists across reloads</li>
+            <li>&dash; Added updatelog</li>
+            <li>&dash; Added ability to download document as .muzzy file (further functionality planned in next update)</li>
+            <li>&dash; The current Muzzy document is now automatically saved locally as you type</li>
+            </ul>
+        </p>
+        <hr />
+        <p class="title is-4">Future (&gt; v3.0)</p>
+        <p class="content">
+            <ul>
+            <li>&dash; Planned ability to insert and generate references/bibliography section</li>
+            <li>&dash; Planned ability to use and insert templates</li>
+            <li>&dash; Planned ability to open .docx and .muzzy files directly in Muzzy</li>
+            <li>&dash; Planned ability to download Muzzy document as .docx file</li>
+            <li>&dash; Planned feature to view and insert synonyms of various words and phrases</li>
+            <li>&dash; Planned feature to view definitions of various words and phrases</li>
+            <li>&dash; Planned feature to save, open, and create multiple Muzzy documents at once</li>
+            </ul>
+        </p>
+        <hr />
+        <p class="title is-4">Past (&lt;= v2.2)</p>
+        <p class="content">
+            The original Muzzy application was created by Cannicide in December 2017, and updated up to version 2.2 through 2019.
+            The latest version of Muzzy does not share a single line of code with the original Muzzy as of version 3.0, which was created in May 2023.
+            Because of this, the list of updates for versions 2.2 and earlier are not relevant to the current Muzzy application, and will not be listed in this updatelog.
+        </p>
+        <div style="width:100%;display:flex;justify-content:center;align-items:center;">
+            <a class="muzzy-error-button button" rel="modal:close">Close</a>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+<script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+<script src="scripts/functionality.js"></script>
+<script src="scripts/editor.js"></script>
+<script src="scripts/dom.js"></script>
+</html>

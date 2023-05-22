@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "typo-js": "^1.2.2",
+    "write-good": "^1.0.8"
+  }
+}

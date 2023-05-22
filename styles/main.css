@@ -1,0 +1,32 @@
+.is-bg-1 {
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.35) ), url(../bg-1.jpg);
+    background-size: cover;
+}
+
+.navbar-end > .navbar-item, .force-text-light, .force-text-light .title, .force-text-light .subtitle, .force-text-light .content {
+    color: rgba(255,255,255,.9) !important;
+}
+
+.force-text-dark, .force-text-dark .title, .force-text-dark .subtitle, .force-text-dark .content {
+    color: rgba(0,0,0,.9) !important;
+}
+
+.navbar-end > .is-active {
+    background-color: rgba(0, 0, 0, 0.075) !important;
+}
+
+.navbar-item:not(.is-active, .navbar-logo):hover {
+    background-color: rgba(255, 255, 255, 0.041) !important;
+}
+
+.big-tag {
+    border: 1px solid rgba(0, 0, 0, 0.507);
+    background-color: rgba(255, 255, 255, 0.904);
+    padding: 15px 18px;
+    border-radius: 100%;
+    font-size: 18pt;
+}
+
+.has-background-purply {
+    background-color: rgb(109, 0, 199);
+}

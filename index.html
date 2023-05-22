@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="has-background-black-bis has-text-light">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Muzzy by Cannicide</title>
+        <link rel="icon" href="icon.png" />
+        <meta property="og:description" content="An advanced tool to detect issues in formal essays." />
+		<meta property="og:title" content="Muzzy by Cannicide" />
+		<meta property="og:url" content="https://muzzy.cannicide.net" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-pricingtable@0.2.0/dist/css/bulma-pricingtable.min.css" />
+        <link rel="stylesheet" href="styles/main.css" />
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+        <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    </head>
+  <body class="has-navbar-fixed-top">
+    <nav id="nav-main" class="navbar has-background-link-dark is-link is-fixed-top">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo">
+                <img src="icon.png" class="logo" alt="Logo">
+                &nbsp;&nbsp;
+                <p class="title is-5 has-text-light">Muzzy</p>
+            </a>
+            <span class="navbar-burger" data-target="navbarMenuHeroB">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu has-background-link-dark">
+            <div class="navbar-end">
+                <a class="navbar-item is-active" onclick="handleNav(this);" data-target="home">
+                    Home
+                </a>
+                <a class="navbar-item" onclick="handleNav(this);" data-target="features">
+                    Features
+                </a>
+                <a class="navbar-item" onclick="handleNav(this);" data-target="testimonials">
+                    Testimonials
+                </a>
+                <a class="navbar-item" onclick="handleNav(this);" data-target="pricing">
+                    Pricing
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-info is-bg-1 is-large" id="home">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+            <p class="title is-1">
+                Muzzy
+            </p>
+            <p class="subtitle is-4">
+                An excellent error-checking tool for formal high school, 
+                AP, and college-level essays.
+            </p>
+            <br>
+            <a class="button is-link is-medium" href="v/3.0/app">
+                Get Started
+            </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-info" id="features">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">Features</p>
+                <!-- Three cards with features -->
+                <br>
+                <br>
+                <div class="tile is-ancestor mx-6">
+                    <div class="tile is-parent has-text-centered">
+                        <div class="tile is-child">
+                        <span class="big-tag has-text-danger">
+                            <i class="iconify" data-icon="mdi-file-document-alert"></i>
+                        </span>
+                        <p>&nbsp;</p>
+                        <p class="title is-5">
+                            Error Detection
+                        </p>
+                        <p class="subtitle is-6">
+                            Our error detection system is
+                            based on a list of non-negotiable
+                            formal essay components and common
+                            errors, carefully compiled by
+                            several high school instructors.
+                        </p>
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="tile is-parent has-text-centered">
+                        <div class="tile is-child">
+                        <span class="big-tag has-text-link">
+                            <i class="iconify" data-icon="mdi-assistant"></i>
+                        </span>
+                        <p>&nbsp;</p>
+                        <p class="title is-5">
+                            Assistance
+                        </p>
+                        <p class="subtitle is-6">
+                            Receive automated guidance through the
+                            essay-writing process, automatically
+                            detect major errors in your paper, and
+                            easily find synonyms for thousands of
+                            words to enhance the quality of your work.
+                        </p>
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                    <div class="tile is-parent has-text-centered">
+                        <div class="tile is-child">
+                        <span class="big-tag has-text-primary">
+                            <i class="iconify" data-icon="mdi-school"></i>
+                        </span>
+                        <p>&nbsp;</p>
+                        <p class="title is-5">
+                            Improvement
+                        </p>
+                        <p class="subtitle is-6">
+                            Muzzy cannot be used as a cheating tool.
+                            Our app is designed to identify errors, not
+                            to fix them for you. Over time, this helps
+                            you improve your own skill at finding and
+                            fixing issues in your papers.
+                        </p>
+                        <p>&nbsp;</p>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero has-background-purply force-text-light" id="testimonials">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">Testimonials</p>
+                <div class="tile is-ancestor force-text-dark">
+                    <div class="tile is-parent">
+                    <div class="card tile is-child">
+                        <div class="card-content">
+                            <p class="title is-5">
+                                "[Muzzy] was awesome in high school. 
+                                I used it a couple years. Easier than
+                                Grammarly, and great to learn how to
+                                problem solve by yourself."
+                            </p>
+                            <p class="subtitle is-6">
+                                College Student
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="tile is-parent">
+                    <div class="card tile is-child">
+                        <div class="card-content">
+                            <p class="title is-5">
+                                "This website is an excellent student-made
+                                application that my
+                                students found very useful. Unlike the 
+                                competitors, it does not simply fix errors 
+                                automatically. I highly approve."
+                            </p>
+                            <p class="subtitle is-6">
+                                Former Teacher
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="tile is-parent">
+                    <div class="card tile is-child">
+                        <div class="card-content">
+                            <p class="title is-5">
+                                "I was a high school student when I
+                                started this tool back in 2017. My
+                                friends and I 
+                                ended up personally using it extensively,
+                                until we became excellent at proofreading."
+                            </p>
+                            <p class="subtitle is-6">
+                                Cannicide (Creator of Muzzy)
+                            </p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div>
+                    Since its creation in December 2017, 
+                    Muzzy has been endorsed by several high school teachers,
+                    a few college professors, various current and former 
+                    high school students, and even a former gubernatorial 
+                    candidate.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero has-background-black-ter force-text-light" id="pricing">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">Pricing</p>
+                <!-- One price card with free -->
+                <div class="pricing-table">
+                    <div class="pricing-plan is-active">
+                        <div class="plan-header">Free Plan</div>
+                        <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>0</span>/year</div>
+                        <div class="plan-items">
+                          <div class="plan-item">Unlimited Error Detection</div>
+                          <div class="plan-item">Unlimited Auto-Guidance</div>
+                          <div class="plan-item">Unlimited Synonyms</div>
+                          <div class="plan-item">No Registration</div>
+                          <div class="plan-item">Free Forever</div>
+                        </div>
+                        <div class="plan-footer">
+                          <a class="button is-fullwidth" href="v/3.0/app">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="pricing-plan is-warning">
+                        <div class="plan-header">Premium Plan</div>
+                        <div class="plan-price"><span class="plan-price-amount"><span class="plan-price-currency">$</span>5</span>/year</div>
+                        <div class="plan-items">
+                          <div class="plan-item">(Not Yet Available)</div>
+                          <div class="plan-item">Won't Affect Free Plan</div>
+                          <div class="plan-item">-</div>
+                          <div class="plan-item">-</div>
+                          <div class="plan-item">-</div>
+                        </div>
+                        <div class="plan-footer">
+                          <a class="button is-fullwidth" disabled>Choose</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer has-background-black-bis has-text-light" id="credits">
+        <div class="content has-text-centered">
+            <div class="level mx-6">
+                <div class="level-item">
+                <p>
+                    Copyright &copy; <strong class="has-text-info">Cannicide</strong> 2017-2023
+                </p>
+                </div>
+                <div class="level-item">
+                    <a href="https://www.buymeacoffee.com/cannicide"><img style="transform: scaleX(80%) scaleY(80%);" src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=cannicide&button_colour=FFDD00&font_colour=000000&font_family=Lato&outline_colour=000000&coffee_colour=ffffff" /></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+  <script src="scripts/main.js"></script>
+</html>
